@@ -54,3 +54,7 @@ class CarWithInit(
         println("Engine started")
     }
 }
+
+fun main() {
+    val car = Car("McQueen", 1995)
+}
