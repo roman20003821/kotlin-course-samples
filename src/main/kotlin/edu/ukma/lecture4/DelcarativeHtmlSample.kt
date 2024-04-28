@@ -34,7 +34,6 @@ fun htmlPage(init: HtmlPage.Builder.() -> Unit): HtmlPage {
 }
 
 class HtmlPage(val elements: List<HtmlElement>) : HtmlElement {
-
     class Builder : HtmlElement.Builder<HtmlPage> {
         private val elements = ArrayList<HtmlElement>()
 
@@ -61,7 +60,6 @@ class HtmlPage(val elements: List<HtmlElement>) : HtmlElement {
 }
 
 class H1(val text: String) : HtmlElement {
-
     class Builder : HtmlElement.Builder<H1> {
         private var text: String = ""
 
@@ -81,9 +79,8 @@ class H1(val text: String) : HtmlElement {
 
 class P(
     val text: String,
-    val links: List<A>
+    val links: List<A>,
 ) : HtmlElement {
-
     class Builder : HtmlElement.Builder<P> {
         private var text: String = ""
         private val links = ArrayList<A>()
@@ -92,7 +89,10 @@ class P(
             text += this
         }
 
-        fun a(url: String, init: A.Builder.() -> Unit) {
+        fun a(
+            url: String,
+            init: A.Builder.() -> Unit,
+        ) {
             val aBuilder = A.Builder()
             aBuilder.url = url
             aBuilder.init()
@@ -112,9 +112,8 @@ class P(
 
 class A(
     val url: String,
-    val text: String
+    val text: String,
 ) : HtmlElement {
-
     class Builder : HtmlElement.Builder<A> {
         var url: String = ""
         private var source: String = ""

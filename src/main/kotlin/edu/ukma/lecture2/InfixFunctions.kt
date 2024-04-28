@@ -3,7 +3,7 @@ package edu.ukma.lecture2
 fun mapCreation() {
     mapOf(
         "dog" to listOf("Golden Retriever", "Beagle"),
-        "cat" to listOf("British Shorthair", "Maine Coon")
+        "cat" to listOf("British Shorthair", "Maine Coon"),
     )
 }
 

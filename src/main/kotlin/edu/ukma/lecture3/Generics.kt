@@ -2,7 +2,7 @@ package edu.ukma.lecture3
 
 import java.io.Closeable
 
-//#region Basic sample
+// #region Basic sample
 class Container<T> {
     fun add(value: T) {}
 }
@@ -18,10 +18,9 @@ fun autoTypeDetectionSample() {
     val wrapper = Wrapper(1)
 }
 
-//#endregion
+// #endregion
 
-
-//#region covariance, contravariance, invariance
+// #region covariance, contravariance, invariance
 class Cat : Animal()
 
 open class Animal
@@ -57,9 +56,9 @@ fun contravarianceSample(x: Comparable<Number>) {
     val y: Comparable<Double> = x // Можна порівнювати лише з числом типу Double
 }
 
-//#endregion
+// #endregion
 
-//#region Constraints
+// #region Constraints
 class ContainerWithTypeConstraints<T : Comparable<T>>
 
 fun <T : Comparable<T>> genericFunctionWithConstraint(): T? {
@@ -67,12 +66,12 @@ fun <T : Comparable<T>> genericFunctionWithConstraint(): T? {
 }
 
 class ContainerWithManyTypeConstraints<T>
-        where T : Comparable<T>,
-              T : Closeable
+    where T : Comparable<T>,
+          T : Closeable
 
-//#endregion
+// #endregion
 
-//#region Nullability
+// #region Nullability
 
 class ContainerWithProhibitedNullability<T : Any>
 
@@ -87,11 +86,10 @@ fun nullabilitySample() {
 //    container.add(null) // Помилка компіляції
 }
 
-//#endregion
-
+// #endregion
 
 abstract class SomeClass<T> {
-    abstract fun execute() : T
+    abstract fun execute(): T
 }
 
 class SomeImplementation : SomeClass<String>() {
@@ -103,7 +101,7 @@ class OtherImplementation : SomeClass<Int>() {
 }
 
 object Runner {
-    inline fun <reified S: SomeClass<T>, T> run() : T {
+    inline fun <reified S : SomeClass<T>, T> run(): T {
         return S::class.java.getDeclaredConstructor().newInstance().execute()
     }
 }

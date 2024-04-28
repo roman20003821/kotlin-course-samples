@@ -2,7 +2,7 @@ package edu.ukma.lecture1
 
 val items = listOf(1, 2, 3)
 
-//#region for
+// #region for
 fun forLoop() {
     for (i in items)
         println(i)
@@ -20,9 +20,9 @@ fun forLoop() {
     // items.forEachIndexed { index, i -> }
 }
 
-//#endregion
+// #endregion
 
-//#region while, do while
+// #region while, do while
 fun whileLoop() {
     val iterator = items.iterator()
     while (iterator.hasNext())
@@ -36,24 +36,25 @@ fun doWhileLoop() {
     } while (iterator.hasNext())
 }
 
-//#endregion
+// #endregion
 
-//#region labels
-//fun main() {
+// #region labels
+// fun main() {
 //    label()
-//}
+// }
 
 fun label() {
     loop@ for (i in listOf(1, 2, 3)) {
         for (j in listOf(1, 2, 3)) {
             println("i: $i, j: $j")
-            if (i == 1)
+            if (i == 1) {
                 continue@loop
-            else
+            } else {
                 break@loop
+            }
         }
     }
     println("End")
 }
 
-//#endregion
+// #endregion

@@ -3,7 +3,7 @@ package edu.ukma.lecture4
 import java.io.InputStream
 import kotlin.random.Random
 
-//#region apply
+// #region apply
 class ServerConfiguration {
     var port: Int = 0
     var sslEnabled: Boolean = false
@@ -28,7 +28,7 @@ fun getServerConfiguration(): ServerConfiguration {
 
 //endregion
 
-//#region also
+// #region also
 
 fun getRandomInt(): Int {
     return Random.nextInt(100).also { value ->

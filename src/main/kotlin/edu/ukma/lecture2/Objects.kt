@@ -2,6 +2,7 @@ package edu.ukma.lecture2
 
 interface DataProvider {
     fun getData(): String
+
     fun saveData(value: String)
 }
 
@@ -28,15 +29,17 @@ class Connection private constructor() {
 }
 
 fun main() {
-    DataProviderManager.registerDataProvider(object : DataProvider {
-        private var data: String = ""
+    DataProviderManager.registerDataProvider(
+        object : DataProvider {
+            private var data: String = ""
 
-        override fun getData(): String {
-            return data
-        }
+            override fun getData(): String {
+                return data
+            }
 
-        override fun saveData(value: String) {
-            data = value
-        }
-    })
+            override fun saveData(value: String) {
+                data = value
+            }
+        },
+    )
 }

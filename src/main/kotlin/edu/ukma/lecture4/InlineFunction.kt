@@ -2,7 +2,10 @@ package edu.ukma.lecture4
 
 import java.util.concurrent.locks.Lock
 
-inline fun <T> lock(lock: Lock, body: () -> T): T {
+inline fun <T> lock(
+    lock: Lock,
+    body: () -> T,
+): T {
     lock.lock()
     return try {
         body()

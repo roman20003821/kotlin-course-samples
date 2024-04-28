@@ -1,6 +1,17 @@
 package edu.ukma.lecture5
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlin.random.Random
@@ -36,7 +47,10 @@ private suspend fun getUserNameFromServer(userId: Int): String {
     return "Oleg"
 }
 
-private suspend fun saveUserName(userId: Int, userName: String) {
+private suspend fun saveUserName(
+    userId: Int,
+    userName: String,
+) {
     delay(1.seconds)
 }
 
@@ -47,8 +61,8 @@ fun launchExample() {
     val coroutineScope = CoroutineScope(Dispatchers.Main)
     coroutineScope.launch(
         // Можна передати контекст нової корутини
-        CoroutineName("Test")
-                + CoroutineExceptionHandler { _, _ -> }
+        CoroutineName("Test") +
+            CoroutineExceptionHandler { _, _ -> },
     ) {
         // Блок виконання корутини
     }
@@ -112,31 +126,37 @@ fun supervisorJobSample2() {
 
 fun coroutinesCancellation() {
     runBlocking {
-        val job = launch {
-            while (isActive) {
-                println("I'm a cooperative coroutine...")
-                delay(1.seconds)
+        val job =
+            launch {
+                while (isActive) {
+                    println("I'm a cooperative coroutine...")
+                    delay(1.seconds)
+                }
             }
-        }
         job.cancel()
     }
 }
 
 fun callbackToCoroutine() {
     runBlocking {
-        val resultCode = suspendCoroutine { continuation ->
-            functionWithCallback(
-                onSuccess = { continuation.resume(it) },
-                onFailure = { continuation.resume(null) }
-            )
-        }
+        val resultCode =
+            suspendCoroutine { continuation ->
+                functionWithCallback(
+                    onSuccess = { continuation.resume(it) },
+                    onFailure = { continuation.resume(null) },
+                )
+            }
         println(resultCode)
     }
 }
 
-private fun functionWithCallback(onSuccess: (Int) -> Unit, onFailure: () -> Unit) {
-    if (Random.nextBoolean())
+private fun functionWithCallback(
+    onSuccess: (Int) -> Unit,
+    onFailure: () -> Unit,
+) {
+    if (Random.nextBoolean()) {
         onSuccess(1)
-    else
+    } else {
         onFailure()
+    }
 }

@@ -2,7 +2,7 @@ package edu.ukma.lecture2
 
 data class User(
     val name: String,
-    val age: Int
+    val age: Int,
 ) {
     var valid: Boolean = true
 }
@@ -18,4 +18,3 @@ fun main() {
     john2.valid = false
     println(john == john2) // True, до автозгенерованих методів беруться до уваги лише властивості з головного конструктора
 }
-

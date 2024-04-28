@@ -1,33 +1,45 @@
 package edu.ukma.lecture1
 
-//#region If Statement
-fun printlnMaxWrong(a: Int, b: Int) {
+// #region If Statement
+fun printlnMaxWrong(
+    a: Int,
+    b: Int,
+) {
     // Так писати не треба, оскільки можна зразу значення вираз if присвої змінній max
     var max: Int
-    if (a > b)
+    if (a > b) {
         max = a
-    else
+    } else {
         max = b
+    }
     println("Max: $max")
 }
 
-fun printlnMaxCorrect1(a: Int, b: Int) {
+fun printlnMaxCorrect1(
+    a: Int,
+    b: Int,
+) {
     // Вираз if може повертати значення
-    val max = if (a > b)
-        a
-    else
-        b
+    val max =
+        if (a > b) {
+            a
+        } else {
+            b
+        }
     println("Max: $max")
 }
 
-fun printlnMaxCorrect2(a: Int, b: Int) {
+fun printlnMaxCorrect2(
+    a: Int,
+    b: Int,
+) {
     // Значення повертати не обовʼяково
-    if (a > b)
+    if (a > b) {
         println("$a")
-    else
+    } else {
         println("$b")
+    }
 }
-
 
 fun oneLineIf(a: Int) {
     val b = if (a > 10) 10 else a
@@ -35,9 +47,9 @@ fun oneLineIf(a: Int) {
 //    val b = a > 10 ? 10 : a
 }
 
-//#endregion
+// #endregion
 
-//#region When Statement
+// #region When Statement
 fun printlnWhen(a: Int) {
     when (a) {
         1 -> println("a == 1")
@@ -53,15 +65,16 @@ fun printlnWhen2(a: Int) {
         a == 2 -> println("a == 2")
         else -> println("a is neither 1 nor 2")
     }
-    // Такий підхід може бути корисним, коли перевірка відбуваєть на основі декількох параметрів, наприклад:
-    /* when {
+    /*
+    Такий підхід може бути корисним, коли перевірка відбуваєть на основі декількох параметрів, наприклад:
+    when {
         a == 1 && b < 10 -> ...
         a == 1 -> ...
         a == 5 -> ...
         else -> ...
     }
     Також може підійти, якщо для перевірки використовуєть інший від equals метод, наприклад, compareTo
-    */
+     */
 }
 
 fun getMenuOption(a: Int): String {
@@ -74,7 +87,9 @@ fun getMenuOption(a: Int): String {
 }
 
 enum class Car {
-    Volkswagen, Audi, Lanos
+    Volkswagen,
+    Audi,
+    Lanos,
 }
 
 fun getCarLevel(car: Car): String {
@@ -86,22 +101,24 @@ fun getCarLevel(car: Car): String {
     }
 }
 
-//#endregion
+// #endregion
 
-//#logical operators
+// #logical operators
 fun main() {
     doConditionally1()
     doConditionally2()
 }
 
 fun doConditionally1() {
-    if (condition1() && condition2())
+    if (condition1() && condition2()) {
         println("End")
+    }
 }
 
 fun doConditionally2() {
-    if (condition1() and condition2())
+    if (condition1() and condition2()) {
         println("End")
+    }
 }
 
 fun condition1(): Boolean {
@@ -114,5 +131,4 @@ fun condition2(): Boolean {
     return true
 }
 
-//#endregion
-
+// #endregion

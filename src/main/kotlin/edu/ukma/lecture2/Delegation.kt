@@ -4,6 +4,7 @@ import kotlin.properties.Delegates
 
 interface View {
     fun draw()
+
     fun invalidate()
 }
 

@@ -3,9 +3,9 @@ package edu.ukma.lecture3
 import java.io.Closeable
 import java.text.DateFormat
 import java.text.ParseException
-import java.util.*
+import java.util.Date
 
-//#region Basic sample
+// #region Basic sample
 class Info(val data: String) {
     companion object {
         fun default() = Info("No data")
@@ -24,20 +24,21 @@ fun tryCatchSample() {
 
 fun tryCatchReturnsDataSample() {
     // Блок try catch повертає значення
-    val info = try {
-        fetchInfo()
-    } catch (e: Exception) {
-        Info.default()
-    }
+    val info =
+        try {
+            fetchInfo()
+        } catch (e: Exception) {
+            Info.default()
+        }
 }
 
 private fun fetchInfo(): Info {
     throw Exception("Unable to fetch info")
 }
 
-//#endregion
+// #endregion
 
-//#region Exception propagation
+// #region Exception propagation
 fun exceptionPropagationSample() {
     try {
         updateUserPassword(1, "incorrect")
@@ -46,12 +47,18 @@ fun exceptionPropagationSample() {
     }
 }
 
-private fun updateUserPassword(userId: Int, password: String) {
+private fun updateUserPassword(
+    userId: Int,
+    password: String,
+) {
     saveUserPassword(userId, password)
     sendNotificationAboutUserPasswordUpdate(userId)
 }
 
-private fun saveUserPassword(userId: Int, password: String) {
+private fun saveUserPassword(
+    userId: Int,
+    password: String,
+) {
     throw Exception("Unable to save user password")
 }
 
@@ -59,15 +66,15 @@ private fun sendNotificationAboutUserPasswordUpdate(userId: Int) {
     println("Sending notification to user with id $userId")
 }
 
-//#endregion
+// #endregion
 
-//#region Kotlin exception handling style
+// #region Kotlin exception handling style
 @JvmInline
 value class OrderId(val value: Int)
 
 data class Order(
     val id: OrderId,
-    var quantity: Int
+    var quantity: Int,
 )
 
 fun highLevelFunction() {
@@ -83,7 +90,10 @@ fun highLevelFunction() {
     }
 }
 
-fun updateOrderQuantity(orderId: OrderId, quantity: Int) {
+fun updateOrderQuantity(
+    orderId: OrderId,
+    quantity: Int,
+) {
     require(quantity > 0) { "Quantity must be positive" }
     val order = loadOrder(orderId)
     order.quantity = quantity
@@ -112,6 +122,7 @@ fun sealedClassSample() {
 
 sealed class ParsedDate {
     data class Success(val date: Date) : ParsedDate()
+
     data class Failure(val errorOffset: Int) : ParsedDate()
 }
 
@@ -130,16 +141,14 @@ private fun getItem(index: Int): Int {
     throw Exception("Item does not exist")
 }
 
-//#endregion
+// #endregion
 
-//#region Use
+// #region Use
 class TcpConnection private constructor() : Closeable {
     fun send(message: String) {
-
     }
 
     override fun close() {
-
     }
 
     companion object {
@@ -154,4 +163,4 @@ fun useSample() {
     }
 }
 
-//#endregion
+// #endregion

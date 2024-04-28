@@ -1,9 +1,7 @@
 package edu.ukma.lecture2
 
 class Collector {
-
-    class Cache {
-    }
+    class Cache
 
     private val cache = Cache()
 }
