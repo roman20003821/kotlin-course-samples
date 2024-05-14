@@ -64,3 +64,11 @@ fun printlnSumOverloading(
         printlnSum2(a, b)
     }
 }
+
+fun namedFunctionParametersSample() {
+    // Можна явно вказувати назви паратрів при виклику функції; порядок аргументів тоді неважливий
+    sum(
+        b = 10,
+        a = 4,
+    )
+}
