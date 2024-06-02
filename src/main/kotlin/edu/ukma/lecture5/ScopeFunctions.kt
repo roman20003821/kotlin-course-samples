@@ -1,4 +1,4 @@
-package edu.ukma.lecture4
+package edu.ukma.lecture5
 
 import java.io.InputStream
 import kotlin.random.Random

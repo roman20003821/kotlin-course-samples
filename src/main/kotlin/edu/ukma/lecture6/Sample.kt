@@ -1,4 +1,4 @@
-package edu.ukma.lecture5
+package edu.ukma.lecture6
 
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineName
